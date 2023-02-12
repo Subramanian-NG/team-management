@@ -1,0 +1,28 @@
+{% include 'team/listpagehead.html' %}
+<style>
+    input[type=text] {width: 400px}
+</style>
+<p style="padding-left: 500px;padding-top: 10px;font-size: 20px;font-weight: 600;"> Edit team member </p>
+<form method="POST" action="" style="display:grid;padding-top: 30px;padding-left: 500px;">
+{% csrf_token %}
+{% for field in form %}
+{% if field.name == 'isAdmin' %}
+<div style="margin-bottom:10px;">
+    <b>{{ field.label }}</b>
+</div>
+{% endif %}
+{{field}}
+<br>
+{% for error in field.errors %}
+    <div style="color:red">
+        {{ error }}
+    </div>
+    {% endfor %}
+{% endfor %}
+<div>
+{% if isAdminUser %}
+<input type="submit" value="Delete" name="action" style="background: #f44336a8;cursor:pointer;width: 100px;">
+{% endif %}
+<input type="submit" value="Save" name="action" style="background: #2196f3bd;cursor:pointer;width: 100px;{% if isAdminUser %}margin-left: 200px; {% endif %}">
+</div>
+</form>

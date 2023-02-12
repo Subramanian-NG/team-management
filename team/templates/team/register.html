@@ -1,0 +1,19 @@
+{% include 'team/head.html' %}
+<style>
+    input {width: 400px}
+</style>
+<p style="padding-left: 500px;padding-top: 10px;font-size: 20px;font-weight: 600;"> User Registration </p>
+<form method="POST" action="" style="display:grid;padding-top: 30px;padding-left: 500px;">
+{% csrf_token %}
+{% for field in form %}
+{{field.label}}
+{{field}}
+<br>
+{% for error in field.errors %}
+    <div style="color:red">
+        {{ error }}
+    </div>
+    {% endfor %}
+{% endfor %}
+<input type="submit" value="Register User" style="background: darkseagreen;cursor:pointer;margin-top:10px">
+</form>

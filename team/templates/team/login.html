@@ -1,0 +1,18 @@
+{% include 'team/head.html' %}
+<style>
+    input {width: 400px}
+</style>
+<p style="padding-left: 500px;padding-top: 10px;font-size: 20px;font-weight: 600;"> Login </p>
+    <form method="POST" action="" style="display:grid;padding-top: 30px;padding-left: 500px;">
+{% csrf_token %}
+Username
+<input type="text" name="username" maxlength="150" autofocus="" required="">
+<br>
+Password
+<input type="password" name="password" autocomplete="new-password" required="">
+<br>
+{%for message in messages%}
+<p style="color:red">{{message}}</p>
+{% endfor %}
+<input type="submit" value="Login" style="background: darkseagreen;cursor:pointer;margin-top:10px">
+</form>

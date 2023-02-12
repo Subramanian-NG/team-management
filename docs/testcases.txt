@@ -1,0 +1,11 @@
+Create superuser
+Login as superuser
+Create a team user with appropriate data and permission
+Register the created team user using register option in home page. While registeing, the email address should be the same as team user email address
+Login as the created user and try perfoming operations list,edit,delete. Check if delete permission is properly applied
+
+Known scenarios/issues
+
+- When registering a team member,the user data will be added to User(auth) table.Django default authentication will be used for user login.
+- listuser,edituser(only view) - direct URL access restriction not handled. Hence these URLS can be accessed without login.
+- The loggedin user can delete his own account. This check not handled.

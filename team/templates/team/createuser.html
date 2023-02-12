@@ -1,0 +1,23 @@
+{% include 'team/listpagehead.html' %}
+<style>
+    input[type=text] {width: 400px}
+</style>
+<p style="padding-left: 500px;padding-top: 10px;font-size: 20px;font-weight: 600;"> Add a team member </p>
+<form method="POST" action="" style="display:grid;padding-top: 30px;padding-left: 500px;">
+{% csrf_token %}
+{% for field in form %}
+{% if field.name == 'isAdmin' %}
+<div style="margin-bottom:10px;">
+    <b>{{ field.label }}</b>
+</div>
+{% endif %}
+{{field}}
+<br>
+{% for error in field.errors %}
+    <div style="color:red">
+        {{ error }}
+    </div>
+    {% endfor %}
+{% endfor %}
+<input type="submit" value="Save" style="background: #2196f3bd;cursor:pointer;width: 100px;margin-left: 10px;">
+</form>
